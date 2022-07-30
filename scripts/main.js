@@ -1,5 +1,6 @@
 const keyboard = document.querySelector('.keyboard')
 const setBtns = new Set()
+const changers = document.querySelectorAll('.changer')
 
 function activeBtn( event ) {
   event.preventDefault()
@@ -36,3 +37,29 @@ document.addEventListener('keyup', (e) => {
   button.classList.remove('btn-active')
 })
 
+/* cganger color */
+
+changers.forEach(changer => {
+  changer.addEventListener('input', () => {
+    const items = document.querySelectorAll(`.${changer.name}`)
+    const typeChange = changer.id
+    switch (typeChange) {
+      case 'color':
+        items.forEach(item => {
+          item.style.color = changer.value
+        })
+        break;
+      case 'background':
+        items.forEach(item => {
+          item.style.background = changer.value
+        })
+        break;
+      case 'backgroundbtn':
+        items.forEach(item => {
+          item.style.background = changer.value
+        })
+        break;
+    }
+    
+  })
+})
